@@ -20,6 +20,7 @@ int main() {
         printf("\t1 - Novo registro \n");
         printf("\t2 - Consultar registro \n");
         printf("\t3 - Deletar registro \n\n");
+        printf("\t4 - Sair do sistema \n\n");
         printf("Opção: ");
         
         scanf("%d", &opcao); // Recebe a opção do usuário
@@ -39,7 +40,12 @@ int main() {
             case 3:
                 Deletar(); // Opção 3 direciona para a função Deletar
                 break;
-                    
+                
+            case 4: // Opção 4 fecha o programa
+            	printf("Obrigado por utilizar o sistema");
+				return 0;
+                break;                   
+				    
             default:
                 printf("Essa opção é inválida \n"); // Qualquer outra opção indica erro
                 system("pause");
