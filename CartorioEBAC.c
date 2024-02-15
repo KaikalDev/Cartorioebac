@@ -12,81 +12,87 @@ int main() {
     int comparacao; // Variável para comparação de strings
     int opcao = 0; // Opção do menu
     int conteudo[200]; // Conteúdo do arquivo
+    int x = 1;
     
-    system("cls"); // Limpa a tela
-    
-    setlocale(LC_ALL, "portuguese"); // Configura a localidade para português
-    
-    // Exibe o menu inicial
-    printf("\t---  Cartório da EBAC  ---\n\n");
-    printf("\t1 - Login\n");
-    printf("\t2 - Cadastro\n\n");
-    printf("Opção: ");
-    
-    scanf("%d", &opcao); // Recebe a opção do usuário
-    
-    FILE *file; // Declaração de ponteiro para arquivo
-    
-    switch (opcao) { // Estrutura de seleção baseada na opção do usuário
-    	
-    	case 1: // Caso o usuário escolha a opção de login
-    		system("cls"); // Limpa a tela
-    		
-     		printf("Digite o usuario: "); // Solicita o nome de usuário
-    		scanf("%s", usuario); // Recebe o nome de usuário
-    		
-    		file = fopen(usuario,"r"); // Abre o arquivo correspondente ao nome de usuário em modo de leitura
-
-		    if(file == NULL){ // Verifica se o arquivo existe
-		        printf("\n Usuario inexistente. \n"); // Exibe mensagem de usuário inexistente
-		        system("pause"); // Pausa o programa
-		    	main(); // Chama a função main novamente para reiniciar o programa
-		    }
-		    
-    		printf("Digite a senha do usuario: "); // Solicita a senha
-    		scanf("%s", senha); // Recebe a senha
-			   		
-    		while(fgets(conteudo, 200, file) != NULL){ // Loop para ler o conteúdo do arquivo
-    			
-    			comparacao = strcmp(senha, conteudo); // Compara a senha digitada com o conteúdo do arquivo
-    			
-    			if (comparacao == 0) { // Se a comparação for igual a zero
-    				Menu(); // Chama a função Menu
-				}
-				
-				else{ // Se a senha estiver incorreta
-				    printf("\n Senha incorreta \n"); // Exibe mensagem de senha incorreta
-		            system("pause"); // Pausa o programa
-		            main(); // Chama a função main novamente para reiniciar o programa
-				}
-
-		        fclose(file); // Fecha o arquivo
-		    }
-    		
-    		break; // Sai do switch case
-    		
-    	case 2: // Caso o usuário escolha a opção de cadastro
-    		system("cls"); // Limpa a tela
-    		
-    		printf("Digite o usuario: "); // Solicita o nome de usuário
-    		scanf("%s", usuario); // Recebe o nome de usuário
-    		
-    		printf("Digite a senha de até 8 (oito) digitos: "); // Solicita a senha
-    		scanf("%s", senha); // Recebe a senha
-    		
-
-    		file = fopen(usuario,"w"); // Abre o arquivo correspondente ao nome de usuário em modo de escrita
-    		fprintf(file, senha); // Escreve a senha no arquivo
-    		fclose(file); // Fecha o arquivo
-    		
-    		break; // Sai do switch case
-    	
-    	default: // Caso o usuário escolha uma opção inválida
-    		Menu(); // Chama a função Menu
-    		break; // Sai do switch case
-    	
-    }
-
+    for (x=1;x=1;){
+		
+	    system("cls"); // Limpa a tela
+	    
+	    setlocale(LC_ALL, "portuguese"); // Configura a localidade para português
+	    
+	    // Exibe o menu inicial
+	    printf("\t---  Cartório da EBAC  ---\n\n");
+	    printf("\t1 - Login\n");
+	    printf("\t2 - Cadastro\n\n");
+	    printf("Opção: ");
+	    
+	    scanf("%d", &opcao); // Recebe a opção do usuário
+	    
+	    FILE *file; // Declaração de ponteiro para arquivo
+	    
+	    switch (opcao) { // Estrutura de seleção baseada na opção do usuário
+	    	
+	    	case 1: // Caso o usuário escolha a opção de login
+	    		system("cls"); // Limpa a tela
+	    		
+	     		printf("Digite o usuario: "); // Solicita o nome de usuário
+	    		scanf("%s", usuario); // Recebe o nome de usuário
+	    		
+	    		file = fopen(usuario,"r"); // Abre o arquivo correspondente ao nome de usuário em modo de leitura
+	
+			    if(file == NULL){ // Verifica se o arquivo existe
+			        printf("\n Usuario inexistente. \n"); // Exibe mensagem de usuário inexistente
+			        system("pause"); // Pausa o programa
+			        fclose(file); // Fecha o arquivo
+			    	main(); // Chama a função main novamente para reiniciar o programa
+			    }
+			    
+	    		printf("Digite a senha do usuario: "); // Solicita a senha
+	    		scanf("%s", senha); // Recebe a senha
+				   		
+	    		while(fgets(conteudo, 200, file) != NULL){ // Loop para ler o conteúdo do arquivo
+	    			
+	    			comparacao = strcmp(senha, conteudo); // Compara a senha digitada com o conteúdo do arquivo
+	    			
+	    			if (comparacao == 0) { // Se a comparação for igual a zero
+	    				fclose(file); // Fecha o arquivo
+	    				Menu(); // Chama a função Menu
+					}
+					
+					else{ // Se a senha estiver incorreta
+					    printf("\n Senha incorreta \n"); // Exibe mensagem de senha incorreta
+			            system("pause"); // Pausa o programa
+			            fclose(file); // Fecha o arquivo
+			            main(); // Chama a função main novamente para reiniciar o programa
+					}
+	
+			    }
+	    		
+	    		break; // Sai do switch case
+	    		
+	    	case 2: // Caso o usuário escolha a opção de cadastro
+	    		system("cls"); // Limpa a tela
+	    		
+	    		printf("Digite o usuario: "); // Solicita o nome de usuário
+	    		scanf("%s", usuario); // Recebe o nome de usuário
+	    		
+	    		printf("Digite a senha: "); // Solicita a senha
+	    		scanf("%s", senha); // Recebe a senha
+	    		
+	
+	    		file = fopen(usuario,"w"); // Abre o arquivo correspondente ao nome de usuário em modo de escrita
+	    		fprintf(file, senha); // Escreve a senha no arquivo
+	    		fclose(file); // Fecha o arquivo
+	    		
+	    		break; // Sai do switch case
+	    	
+	    	default: // Caso o usuário escolha uma opção inválida
+	    		printf("opção invalida");
+	    		system("pause");
+	    		break; // Sai do switch case
+	    	
+	    }
+	}
 		
 }
 
@@ -97,7 +103,7 @@ int Menu(){
     int x = 1; // Variável de controle do loop
 	
 	// Loop principal
-	for (x = 1; x = 1;) {
+	for (x = 1; x == 1;) {
 	
 	    system("cls"); // Limpa a tela
 	
@@ -131,8 +137,9 @@ int Menu(){
 	            break;
 	                
 	        case 4: // Opção 4 fecha o programa
-	            printf("Obrigado por utilizar o sistema");
-				return 0;
+	            printf("Obrigado por utilizar o sistema \n");
+	            system("pause");
+				exit(0);
 	            break;                   
 					    
 	        default:
@@ -288,7 +295,7 @@ int Deletar(){
         if(file == NULL){
             printf("\n Arquivo inexistente. \n");
             system("pause");
-            main();
+            Menu();
         }
 
         // Lê e exibe o conteúdo do arquivo
@@ -312,7 +319,7 @@ int Deletar(){
 				remove(cpf);
 				printf("Arquivo removido\n");
 				system("pause");
-				main();
+				Menu();
 				
 				break;	
 						
